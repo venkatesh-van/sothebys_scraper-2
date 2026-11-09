@@ -2,7 +2,7 @@
 
 Collects lot data (artist, title, estimate, result, medium, size, provenance) from Sotheby's public pages into **one CSV schema**, for recent auctions and for a historical date window.
 
-> Status: unit-tested and run end to end against a local fake site. **Not yet run against the live site.** See `docs/RISKS.md` and `docs/DEFINITION_OF_DONE.md`.
+> **Status:** 157 offline tests pass. Run against the live Sotheby's site (public pages, no login); sold prices behind login are marked `result_not_public`.
 
 ## Setup
 
