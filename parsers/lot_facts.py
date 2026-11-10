@@ -29,6 +29,14 @@ YEAR_AFTER_VERB = re.compile(r"(?:Executed|Painted|Created|Cast|Conceived|Printe
 
 YEAR_AFTER_DATED = re.compile(r"\bdated[^\n]*?(\d{4})")
 
+# A year in a lot title: "circa 1680", "1691-1695", "dated 1616", "Paris 1765/1766".
+# Not part of a longer number, a price or a page reference.
+YEAR_IN_TITLE = re.compile(r"(?<![\d.,/£$€])(1[2-9]\d\d|20[0-2]\d)(?!\d|[.,]\d)")
+# Brackets hold an artist's life dates: "after Giambologna (1529 - 1608)".
+BRACKETS = re.compile(r"\([^)]*\)")
+# Everything after "import marks" is when the piece was imported, not made.
+IMPORT_MARKS = re.compile(r"\bimport marks?\b", re.I)
+
 # Evidence that a size is written on the page, even in units extract_facts() does not read.
 EVIDENCE_SIZE = re.compile(r"\d\s*(?:cm|mm|ft)(?![a-z])|\d\s*(?:in\.|inch|inches)(?!\w)", re.I)
 
@@ -64,6 +72,22 @@ def extract_facts(text):
     return facts
 
 
+def year_from_title(title):
+    """The year a lot was made, from its title, or None.
+
+    Decorative lots (silver, gold boxes, clocks ...) put the date in the title, not in the
+    description: 'A German parcel-gilt silver tankard, Daniel Stobbe, Konigsberg, circa 1680'.
+      * a range ('1691-1695') gives its first year
+      * years in brackets are skipped (an artist's life dates)
+      * years after 'import marks' are skipped (when it was imported, not made)
+      * a century only ('late 19th century') gives None: no guessing
+    """
+    text = BRACKETS.sub(" ", title or "")
+    text = IMPORT_MARKS.split(text, maxsplit=1)[0]
+    match = YEAR_IN_TITLE.search(text)
+    return int(match.group(1)) if match else None
+
+
 def infer_medium(text):
     """Looser medium search, used only when extract_facts() found none.
 
@@ -85,13 +109,21 @@ def infer_medium(text):
     return None
 
 
-def facts_from_text(description_en, catalogue_note=""):
+def facts_from_text(description_en, catalogue_note="", title=""):
     """What can be filled from text ALREADY in the csv, with no request.
 
     Returns (values, flags): literature / exhibited / provenance from sub-headings in the note
-    or description, dimensions from the description (glued lines and inch-only sizes included).
+    or description, dimensions from the description (glued lines and inch-only sizes included),
+    year_created from the description, else from the title.
     """
     values, flags = {}, []
+    year = extract_facts(description_en)["year_created"]
+    if year is None:
+        year = year_from_title(title)
+        if year is not None:
+            flags.append("year_created_from_title")
+    if year is not None:
+        values["year_created"] = year
     for source, label in ((catalogue_note, "note"), (description_en, "description")):
         for name, text in split_subsections(source).items():
             if name not in values:

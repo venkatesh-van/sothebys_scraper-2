@@ -10,7 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 OUTPUT = ROOT.parent / "sothebys_scraper.zip"
 
-SKIP_DIRS = {".venv", "venv", "__pycache__", ".pytest_cache", ".git", "logs", "crawl-state"}
+SKIP_DIRS = {".artvenv", "venv", "__pycache__", ".pytest_cache", ".git", "logs", "crawl-state"}
 SKIP_FILES = {".env", ".DS_Store", OUTPUT.name}
 SKIP_PATHS = ("data/raw/",)          # saved web pages: large, re-creatable
 SKIP_SUFFIXES = (".pyc",)

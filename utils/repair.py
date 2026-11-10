@@ -63,7 +63,7 @@ def offline_fill(row):
     * dimensions from the description, including glued lines ('55mmFrench') and inch-only sizes
     """
     values, flags = facts_from_text(row.get("description_en") or row.get("description") or "",
-                                    row.get("catalogue_note") or "")
+                                    row.get("catalogue_note") or "", row.get("title") or "")
     return fill_blanks(row, values, flags)
 
 

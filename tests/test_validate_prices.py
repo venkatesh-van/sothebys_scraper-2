@@ -6,7 +6,7 @@ import pytest
 
 from models.auction_lot import FIELDS
 from pipelines.storage import migrate_header
-from validate_prices import main, validate
+from validate_sold_prices import main, validate
 
 SOLD = dict(lot_id="a", lot_number="1", lot_status="sold", is_sold="True", is_closed="True", reserve_met="True",
             sold_price="1890", sold_currency="EUR", estimate_low="1500", estimate_high="2000",

@@ -10,7 +10,7 @@ Collects lot data (artist, title, estimate, result, medium, size, provenance) fr
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env        # optional: set SCRAPER_CONTACT (goes in the User-Agent)
-pytest                      # 141 offline tests
+pytest                      # 157 offline tests
 ```
 
 ## Run
@@ -35,7 +35,8 @@ scrapy crawl recent_auctions -a days=30 -a max_auctions=1 -a details=1
 scrapy crawl historical_auctions -a start_date=2015-08-01 -a end_date=2015-08-31
 
 # fill blanks in a CSV you already have (writes into that CSV; <name>.bak.csv is the untouched original)
-python gap_report.py data/processed/recent_auctions_recent.csv            # where are the blanks?
+python -m utils.gap_report data/processed/recent_auctions_recent.csv        # where are the blanks?  
+   
 scrapy crawl repair_details -a source=data/processed/recent_auctions_recent.csv -a offline=1   # no requests
 scrapy crawl repair_details -a source=data/processed/recent_auctions_recent.csv                # description, dimensions
 scrapy crawl repair_details -a source=data/processed/recent_auctions_recent.csv -a only=description,literature,dimensions -a retries=4

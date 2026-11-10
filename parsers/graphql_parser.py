@@ -4,6 +4,7 @@ import re
 
 from models.auction_lot import AuctionLot
 from parsers.common import clean_text, to_int, utc_now_iso
+from parsers.lot_facts import year_from_title
 
 NOT_WITHDRAWN = {"", "notaffected", "none"}
 
@@ -112,6 +113,7 @@ def parse_card(card, auction_info, source_version):
         lot_number=str(lot_number) if lot_number is not None else None,
         artist=artist,
         title=title,
+        year_created=year_from_title(title),
         estimate_low=to_int((estimate.get("lowEstimate") or {}).get("amount")),
         estimate_high=to_int((estimate.get("highEstimate") or {}).get("amount")),
         estimate_currency=auction.get("currency"),
@@ -132,6 +134,8 @@ def parse_card(card, auction_info, source_version):
         source_version=source_version,
         parse_quality="good" if (lot_number is not None and card.get("lotId") and title) else "partial",
     )
+    if lot.year_created is not None:
+        lot.add_flag("year_created_from_title")     # the lot page may replace it (merge_detail)
     if status == "hidden":
         lot.add_flag("result_not_public")
     if estimate.get("__typename") == "EstimateUponRequest":

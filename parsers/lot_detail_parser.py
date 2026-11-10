@@ -156,6 +156,10 @@ def merge_detail(lot, response, report=None):
         if value not in (None, ""):
             setattr(lot, name, value)
     lot.add_flag(*report.flags)
+    if detail.get("year_created") is not None:
+        # the description's "executed in / dated" year replaced the title's year: drop its flag
+        lot.data_quality_flags = ";".join(
+            f for f in (lot.data_quality_flags or "").split(";") if f and f != "year_created_from_title") or None
     box = parse_result_box(response)
     if box["label"] == "Lot Sold" and box["amount"] is not None and lot.sold_price is None:
         lot.sold_price, lot.sold_currency = box["amount"], box["currency"]
