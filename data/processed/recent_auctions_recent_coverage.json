@@ -2,94 +2,94 @@
   "spider": "recent_auctions",
   "source": "sothebys",
   "source_version": "recent",
-  "finished_at": "2026-11-09T19:19:39+00:00",
+  "finished_at": "2026-11-10T16:58:45+00:00",
   "csv_file": "data/processed/recent_auctions_recent.csv",
-  "rows_written_this_run": 152,
+  "rows_written_this_run": 102,
   "rows_skipped_already_stored": 0,
-  "rows_in_file": 152,
+  "rows_in_file": 254,
   "note": "fill rates cover rows written in this run only",
   "lot_status_counts": {
-    "hidden": 137,
-    "withdrawn": 15
+    "withdrawn": 1,
+    "hidden": 101
   },
   "quality_flag_counts": {
-    "result_not_public": 137,
-    "description_from_page_json": 24,
-    "provenance_from_page_json": 24,
-    "catalogue_note_from_page_json": 8,
-    "literature_from_page_json": 2,
-    "literature_from_note": 1,
-    "medium_inferred": 2,
-    "medium_from_page_text": 1,
+    "medium_inferred": 10,
+    "result_not_public": 101,
+    "description_from_page_json": 14,
+    "catalogue_note_from_page_json": 12,
+    "literature_from_note": 7,
+    "year_created_from_title": 18,
+    "provenance_from_page_json": 7,
+    "literature_from_page_json": 1,
     "exhibited_from_page_json": 1
   },
   "columns": {
     "auction_name": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "auction_detail": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "auction_category": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "auction_date": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "auction_url": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "lot_number": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "artist": {
-      "filled": 0,
-      "fill_rate": 0.0
+      "filled": 21,
+      "fill_rate": 0.2059
     },
     "title": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "year_created": {
-      "filled": 3,
-      "fill_rate": 0.0197
+      "filled": 23,
+      "fill_rate": 0.2255
     },
     "medium": {
-      "filled": 7,
-      "fill_rate": 0.0461
+      "filled": 49,
+      "fill_rate": 0.4804
     },
     "dimensions": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "estimate_low": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "estimate_high": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "estimate_currency": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "is_closed": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "reserve_met": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "lot_status": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "is_sold": {
@@ -105,7 +105,7 @@
       "fill_rate": 0.0
     },
     "withdrawn_state": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "result_label": {
@@ -117,68 +117,68 @@
       "fill_rate": 0.0
     },
     "lot_id": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "auction_id": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "sale_number": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "lot_url": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "image_url": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "description": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "description_en": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "provenance": {
-      "filled": 152,
-      "fill_rate": 1.0
+      "filled": 77,
+      "fill_rate": 0.7549
     },
     "literature": {
-      "filled": 16,
-      "fill_rate": 0.1053
+      "filled": 63,
+      "fill_rate": 0.6176
     },
     "exhibited": {
-      "filled": 2,
-      "fill_rate": 0.0132
+      "filled": 4,
+      "fill_rate": 0.0392
     },
     "catalogue_note": {
-      "filled": 28,
-      "fill_rate": 0.1842
+      "filled": 77,
+      "fill_rate": 0.7549
     },
     "source": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "scraped_at": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "source_version": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "parse_quality": {
-      "filled": 152,
+      "filled": 102,
       "fill_rate": 1.0
     },
     "data_quality_flags": {
-      "filled": 139,
-      "fill_rate": 0.9145
+      "filled": 102,
+      "fill_rate": 1.0
     }
   }
 }

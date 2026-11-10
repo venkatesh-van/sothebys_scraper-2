@@ -2,7 +2,7 @@
 
 Collects lot data (artist, title, estimate, result, medium, size, provenance) from Sotheby's public pages into **one CSV schema**, for recent auctions and for a historical date window.
 
-> **Status:** 157 offline tests pass. Run against the live Sotheby's site (public pages, no login); sold prices behind login are marked `result_not_public`.
+> **Status:**  173 offline tests pass. Run against the live Sotheby's site (public pages, no login); sold prices behind login are marked `result_not_public`.
 
 ## Setup
 
@@ -10,7 +10,7 @@ Collects lot data (artist, title, estimate, result, medium, size, provenance) fr
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env        # optional: set SCRAPER_CONTACT (goes in the User-Agent)
-pytest                      # 157 offline tests
+pytest                      # 173 offline tests
 ```
 
 ## Run
